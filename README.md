@@ -1,1 +1,1 @@
-# practice
+Practice University Student Dashboard.
