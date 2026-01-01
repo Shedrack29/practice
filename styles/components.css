@@ -9,8 +9,8 @@
   background: var(--bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  margin-bottom: 24px;
   max-height: 64px;
+  margin-bottom: 15px;
 }
 
 .header-left {
