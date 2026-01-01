@@ -14,7 +14,7 @@
   grid-template-columns: 240px 1fr 320px;
   min-height: 100vh;
   gap: 24px;
-  padding: 24px;
+  padding: 24px 24px 24px 0;
   background: #f6f7fb;
 }
 
@@ -44,3 +44,7 @@
   opacity: 0.6;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
