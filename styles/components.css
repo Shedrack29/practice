@@ -16,14 +16,12 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 0px;
   flex-shrink: 0;
 }
 
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 0px;
   flex-shrink: 1;
 }
 
@@ -57,7 +55,6 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  margin-left: 0;
 }
 
 /* Search Bar */
@@ -204,9 +201,21 @@
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  border: none;
+  padding: 0;
+  outline: none;
 }
 
 .profile-picture:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+.profile-picture:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.profile-picture:active {
+  transform: scale(0.95);
 }

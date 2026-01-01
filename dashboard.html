@@ -16,8 +16,8 @@
   <div class="header">
     <div class="header-left">
       <div class="header-brand">
-        <img src="https://url-shortener.me/5Z5T" alt="Header Image" class="header-image">
-        <div class="brand-text">
+        <img src="https://url-shortener.me/5Z5T" alt="University logo" class="header-image">
+        <div class="brand-text" aria-label="Hitler's University">
           <span class="brand-line">Hitler's</span>
           <span class="brand-line">University</span>
         </div>
@@ -26,12 +26,12 @@
     
     <div class="header-center">
       <div class="search-container">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" class="search-bar" placeholder="Search...">
+        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+        <input type="text" class="search-bar" placeholder="Search..." aria-label="Search">
       </div>
       
       <div class="filter-dropdown">
-        <select class="filter-select">
+        <select class="filter-select" aria-label="Filter content by status">
           <option value="all">All</option>
           <option value="active">Active</option>
           <option value="archived">Archived</option>
@@ -42,11 +42,11 @@
     </div>
     
     <div class="header-actions">
-      <button class="notifications-btn">
-        <i class="fas fa-bell"></i>
+      <button class="notifications-btn" aria-label="View notifications">
+        <i class="fas fa-bell" aria-hidden="true"></i>
       </button>
       
-      <div class="profile-picture"></div>
+      <button class="profile-picture" aria-label="Open user profile menu"></button>
     </div>
   </div>
 
