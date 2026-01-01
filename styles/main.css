@@ -15,7 +15,7 @@
   min-height: 100vh;
   gap: 24px;
   padding: 24px 24px 24px 0;
-  background: #f6f7fb;
+  background: linear-gradient(to right, transparent 240px, #f6f7fb 240px);
 }
 
 /* ===== DEV ZONE HIGHLIGHTS (TEMP) ===== */
@@ -47,4 +47,5 @@
 html, body {
   margin: 0;
   padding: 0;
+  background: white;
 }
