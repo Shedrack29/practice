@@ -13,15 +13,15 @@
   display: grid;
   grid-template-columns: 240px 1fr 320px;
   min-height: 100vh;
-  gap: 24px;
-  padding: 24px 24px 24px 0;
-  background: #f6f7fb;
+  gap: 15px;
+  padding: 0 24px 24px 0;
 }
 
 /* ===== DEV ZONE HIGHLIGHTS (TEMP) ===== */
 .debug-zones .sidebar {
   background: rgba(255, 99, 71, 0.08);
   border: 2px dashed rgba(255, 99, 71, 0.4);
+  margin-top: -15px;
 }
 
 .debug-zones .dashboard {
@@ -44,9 +44,9 @@
   opacity: 0.6;
 }
 
-/* Reset some default styles */
 html, body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(to right, white 240px, #f6f7fb 240px);
+  background-attachment: fixed;
 }
-
