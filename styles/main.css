@@ -17,11 +17,26 @@
   padding: 0 24px 24px 0;
 }
 
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard {
+  min-height: 100vh;
+}
+
+.right-panel {
+  min-height: 100vh;
+}
+
 /* ===== DEV ZONE HIGHLIGHTS (TEMP) ===== */
 .debug-zones .sidebar {
   background: rgba(255, 99, 71, 0.08);
   border: 2px dashed rgba(255, 99, 71, 0.4);
-  margin-top: -15px;
+  overflow: hidden;
 }
 
 .debug-zones .dashboard {
