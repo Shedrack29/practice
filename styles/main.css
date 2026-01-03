@@ -11,32 +11,17 @@
 
 .app {
   display: grid;
-  grid-template-columns: 240px 1fr 320px;
-  min-height: 100vh;
+  grid-template-columns: 240px 1fr;
   gap: 15px;
   padding: 0 24px 24px 0;
-}
-
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.dashboard {
-  min-height: 100vh;
-}
-
-.right-panel {
-  min-height: 100vh;
+  height: calc(100vh - 79px);
 }
 
 /* ===== DEV ZONE HIGHLIGHTS (TEMP) ===== */
 .debug-zones .sidebar {
   background: rgba(255, 99, 71, 0.08);
   border: 2px dashed rgba(255, 99, 71, 0.4);
-  overflow: hidden;
+  margin-top: -15px;
 }
 
 .debug-zones .dashboard {
@@ -64,4 +49,22 @@ html, body {
   padding: 0;
   background: linear-gradient(to right, white 240px, #f6f7fb 240px);
   background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* New content wrapper: middle + right live inside this and it is the only scroll container */
+.content-wrapper {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 15px;
+  height: 100%;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.content-wrapper > .dashboard,
+.content-wrapper > .right-panel {
+  /* These panels should not scroll themselves */
+  overflow: visible;
 }
