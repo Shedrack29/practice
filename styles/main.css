@@ -56,7 +56,7 @@ html, body {
 .content-wrapper {
   grid-column: 2 / 3;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 420px;
   gap: 15px;
   height: 100%;
   overflow-y: auto;
