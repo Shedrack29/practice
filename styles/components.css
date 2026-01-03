@@ -384,7 +384,9 @@
   left: 20px;
   top: 62px;
   transform: none;
-  font-weight: 700;
+  height: 0%;
+  /* deeper blue resembling the profile gradient */
+  background: linear-gradient(180deg, rgba(108,99,255,0.36), rgba(139,92,246,0.32));
 }
 
 .panel-subtext {
@@ -496,7 +498,7 @@ body.app-loading > *:not(#loader) {
 .dashboard-course-section .course-cards,
 .dashboard-course-cards {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
   margin: 20px 24px 0 24px;
 }
@@ -504,9 +506,9 @@ body.app-loading > *:not(#loader) {
 .dashboard-course-section .course-card,
 .dashboard-course-cards .course-card {
   width: 60px;
-  min-height: 160px;
+  min-height: 180px;
   background: var(--bg-card);
-  border-radius: 30px;
+  border-radius: 60px;
   box-shadow: var(--shadow);
   padding: 12px 8px;
   position: relative;
@@ -521,6 +523,48 @@ body.app-loading > *:not(#loader) {
 .dashboard-course-cards .course-card::before {
   /* removed circle indicator; keep pseudo-element disabled to avoid layout shifts */
   display: none;
+}
+
+/* Vertical label text for course cards (like the dashboard panels) */
+.course-text {
+  display: block;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: 'Inter', sans-serif;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, "Roboto Mono", "Inter", monospace;
+  color: var(--text-main);
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform-origin: center;
+  transform: translateX(-50%) rotate(180deg);
+  white-space: nowrap;
+  pointer-events: none;
+  font-weight: bold;
+  z-index: 6;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* Value shown at the bottom of the vertical label, horizontally aligned */
+.course-value {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  /* numeric-friendly typography */
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, "Roboto Mono", "Inter", monospace;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "tnum" 1, "zero" 1;
+  font-feature-settings: "tnum" 1, "zero" 1;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.2px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .panel-badge {
@@ -542,6 +586,65 @@ body.app-loading > *:not(#loader) {
   
   transition: opacity 0.18s ease, transform 0.18s ease;
   opacity: 0;
+}
+
+/* Full-card vertical fill overlay (fills from bottom up) */
+.fill-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 60px;
+}
+
+.fill-overlay > .fill-inner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  /* use the site's primary hue (rgba(108,99,255)) for a cohesive blue fill */
+  background: blue;
+  transition: height 600ms cubic-bezier(.2,.9,.2,1);
+  z-index: 1;
+}
+
+.course-value { z-index: 5; }
+
+/* reveal numeric value on hover or keyboard focus */
+.dashboard-course-cards .course-card:hover .course-value,
+.dashboard-course-cards .course-card:focus-within .course-value {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* when active (overlay animating), ensure text becomes readable */
+.dashboard-course-cards .course-card.active .course-text,
+.dashboard-course-cards .course-card.active .course-value {
+  color: #ffffff;
+}
+
+/* hide the vertical label when hovering or keyboard-focusing the card */
+.dashboard-course-cards .course-card:hover .course-text,
+.dashboard-course-cards .course-card:focus-within .course-text {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px) rotate(180deg);
+}
+
+/* blue border-blur / glow on hover (subtle, preserves layout) */
+.dashboard-course-cards .course-card:hover,
+.dashboard-course-section .course-card:hover {
+  box-shadow: 0 14px 40px rgba(15,23,42,0.08),
+              0 0 36px rgba(108,99,255,0.22),
+              0 0 72px rgba(108,99,255,0.18);
+  border-color: rgba(108,99,255,0.18);
+  transform: translateY(-3px);
 }
 
 .dashboard-panel:hover .panel-badge {
