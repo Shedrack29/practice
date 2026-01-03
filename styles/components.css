@@ -253,7 +253,7 @@
 
 .dashboard-options i {
   color: var(--text-main);
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .dashboard-options:hover {
@@ -283,6 +283,33 @@
   align-items: center;
   justify-content: center;
 }
+
+  /* Hover badge that appears next to the panel title */
+  .panel-badge {
+    display: none;
+    position: absolute;
+    left: 120px;
+    top: 50%;
+    transform: translateX(12px) translateY(-50%);
+    background: rgba(108, 99, 255, 0.12);
+    color: rgba(44, 37, 179, 1);
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(108,99,255,0.08);
+    border: 1px solid rgba(108,99,255,0.18);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    opacity: 0;
+  }
+
+  .dashboard-panel:hover .panel-badge {
+    display: inline-block;
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
+  }
 
 .dashboard-panel::before {
   content: '';
@@ -353,11 +380,11 @@
 
 .dashboard-panel:hover .panel-text {
   writing-mode: horizontal-tb;
-  transform: none;
-  font-weight: bold;
   position: absolute;
   left: 20px;
-  top: 70px;
+  top: 62px;
+  transform: none;
+  font-weight: 700;
 }
 
 .panel-subtext {
@@ -445,16 +472,80 @@
   visibility: hidden;
 }
 
+/* Simple blue spinner */
 .loader {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(108, 99, 255, 0.2);
-  border-top: 5px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  border: 5px solid rgba(108, 99, 255, 0.18);
+  border-top-color: var(--primary);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.9s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-} 
+  to { transform: rotate(360deg); }
+}
+
+/* While app-loading is present on body, keep page elements hidden but keep #loader visible */
+body.app-loading > *:not(#loader) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Course cards under Course Result */
+.dashboard-course-section .course-cards,
+.dashboard-course-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 20px 24px 0 24px;
+}
+
+.dashboard-course-section .course-card,
+.dashboard-course-cards .course-card {
+  width: 60px;
+  min-height: 160px;
+  background: var(--bg-card);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 12px 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+.dashboard-course-section .course-card::before,
+.dashboard-course-cards .course-card::before {
+  /* removed circle indicator; keep pseudo-element disabled to avoid layout shifts */
+  display: none;
+}
+
+.panel-badge {
+  display: none;
+  position: absolute;
+  left: 120px;
+  top: 56px;
+  transform: translateX(12px);
+  background: rgba(108, 99, 255, 0.12);
+  color: rgba(44, 37, 179, 1);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(108,99,255,0.08);
+  border: 1px solid rgba(108,99,255,0.18);
+  
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 0;
+}
+
+.dashboard-panel:hover .panel-badge {
+  display: inline-block;
+  opacity: 1;
+  transform: translateX(0);
+}

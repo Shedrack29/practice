@@ -12,6 +12,10 @@
 
 </head>
 <body>
+  <!-- Page loader -->
+  <div class="loader-wrapper" id="loader">
+    <div class="loader" aria-hidden="true"></div>
+  </div>
    
   <div class="header">
     <div class="header-left">
@@ -27,11 +31,11 @@
     <div class="header-center">
       <div class="search-container">
         <i class="fas fa-search search-icon" aria-hidden="true"></i>
-        <input type="text" class="search-bar" placeholder="Search..." aria-label="Search">
+        <input id="search-input" type="text" class="search-bar" placeholder="Search..." aria-label="Search">
       </div>
       
       <div class="filter-dropdown">
-        <select class="filter-select" aria-label="Filter content by status">
+        <select id="filter-select" class="filter-select" aria-label="Filter content by status">
           <option value="all">All</option>
           <option value="active">Active</option>
           <option value="archived">Archived</option>
@@ -67,6 +71,7 @@
       <div class="dashboard-panels">
         <article class="dashboard-panel">
           <span class="panel-text">Analytics</span>
+          <span class="panel-badge">Recording</span>
           <span class="panel-subtext">Listen to the summary of this class.</span>
           <div class="panel-icons-hidden">
             <i class="fas fa-clock"></i>
@@ -75,6 +80,7 @@
         </article>
         <article class="dashboard-panel">
           <span class="panel-text">English</span>
+          <span class="panel-badge">Schedule</span>
           <span class="panel-subtext">You have a class in 20 minutes.</span>
           <div class="panel-icons-hidden">
             <i class="fas fa-clock"></i>
@@ -83,6 +89,7 @@
         </article>
         <article class="dashboard-panel">
           <span class="panel-text">History</span>
+          <span class="panel-badge">Recording</span>
           <span class="panel-subtext">Listen to the summary of this class.</span>
           <div class="panel-icons-hidden">
             <i class="fas fa-clock"></i>
@@ -91,6 +98,7 @@
         </article>
         <article class="dashboard-panel">
           <span class="panel-text">David</span>
+          <span class="panel-badge">Call</span>
           <span class="panel-subtext">Get on a call with David.</span>
           <div class="panel-icons-hidden">
             <i class="fas fa-clock"></i>
@@ -99,13 +107,19 @@
         </article>
       </div>
 
-      <div class="dashboard-header">
+      <div class="dashboard-header dashboard-course-section">
         <h1 class="dashboard-welcome">Course Result</h1>
         <button class="dashboard-options" aria-label="Options">
           <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </div>
-      <div style="padding-bottom: 1000px;"></div>
+      <div class="course-cards dashboard-course-cards">
+        <div class="course-card" aria-hidden="true"></div>
+        <div class="course-card" aria-hidden="true"></div>
+        <div class="course-card" aria-hidden="true"></div>
+        <div class="course-card" aria-hidden="true"></div>
+      </div>
+      <div class="dashboard-section dashboard-spacer" style="padding-bottom: 1000px;"></div>
     </main>
 
       <section class="right-panel">
@@ -115,5 +129,6 @@
   </div>
 
     
+  <script src="scripts/loader.js"></script>
 </body>
 </html>
