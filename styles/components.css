@@ -222,3 +222,89 @@
 .profile-picture:active {
   transform: scale(0.95);
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  height: 100%;
+}
+
+
+
+.balance-card {
+  height: 80px;
+  border-radius: 12px;
+  background: #e0e0e0;
+  padding: 12px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  height: 40px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+/* remove earlier larger promo-card rules; final unified styling above applies */
+
+.logout-btn {
+  margin-top: auto;
+  height: 40px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  border: none;
+}
+.sidebar {
+  background: #ffffff;
+}
+.balance-card {
+  height: auto;
+  border-radius: 14px;
+  background: #f3f2ff;
+  padding: 16px;
+  font-weight: 600;
+}
+.nav-item {
+  height: 44px;
+  border-radius: 10px;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.nav-item.active {
+  background: #e9e7ff;
+  color: var(--primary);
+}
+
+.logout-btn {
+  margin-top: auto;
+  height: 40px;
+  border-radius: 10px;
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+.nav-item i,
+.logout-btn i {
+  font-size: 16px;
+  color: #6b7280;
+}
+.nav-item.active i {
+  color: var(--primary);
+}
