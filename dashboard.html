@@ -21,13 +21,6 @@
 
 <!-- Feather icons -->
 <script src="https://unpkg.com/feather-icons"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.feather) {
-      feather.replace({ 'stroke-width': 1.5 });
-    }
-  });
-</script>
     <div class="header-left">
       <div class="header-brand">
         <img src="https://url-shortener.me/5Z5T" alt="University logo" class="header-image">
@@ -74,33 +67,33 @@
   </div>
 
   <nav class="sidebar-nav">
-    <div class="nav-item active">
+    <div class="nav-item active" role="button" tabindex="0" aria-pressed="true">
       <i data-feather="shopping-cart"></i>
       <span class="nav-text">Buy a course</span>
     </div>
 
-    <div class="nav-item">
+    <div class="nav-item" role="button" tabindex="0" aria-pressed="false">
       <i data-feather="calendar"></i>
       <span class="nav-text">Semester info</span>
     </div>
 
-    <div class="nav-item">
+    <div class="nav-item" role="button" tabindex="0" aria-pressed="false">
       <i data-feather="user"></i>
       <span class="nav-text">Account</span>
     </div>
 
-    <div class="nav-item">
+    <div class="nav-item" role="button" tabindex="0" aria-pressed="false">
       <i data-feather="refresh-cw"></i>
       <span class="nav-text">Change Subjects</span>
     </div>
 
-    <div class="nav-item">
+    <div class="nav-item" role="button" tabindex="0" aria-pressed="false">
       <i data-feather="settings"></i>
       <span class="nav-text">Settings</span>
     </div>
   </nav>
 
-    <div class="promo-card">
+    <div class="promo-card" role="button" tabindex="0" aria-label="Try the AI feature">
     <img src="resources/robot.png" alt="robot-image" class="promo-card-image"> 
     <span class="promo-card-text">Try the AI<br>feature<i class="fa-solid fa-arrow-up promo-arrow"></i></span>
   </div>
@@ -198,20 +191,7 @@
     </div>
   </div>
 
-    
-<script>
-// Toggle active nav-item on click so it stays styled (black)
-document.addEventListener('DOMContentLoaded', function () {
-  const items = document.querySelectorAll('.sidebar-nav .nav-item');
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      items.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
-});
-</script>
-
+  <script src="scripts/dashboard.js"></script>
   <script src="scripts/loader.js"></script>
 </body>
 </html>
