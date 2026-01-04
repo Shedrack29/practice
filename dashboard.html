@@ -14,6 +14,16 @@
 <body>
    
   <div class="header">
+
+<!-- Feather icons -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.feather) {
+      feather.replace({ 'stroke-width': 1.5 });
+    }
+  });
+</script>
     <div class="header-left">
       <div class="header-brand">
         <img src="https://url-shortener.me/5Z5T" alt="University logo" class="header-image">
@@ -26,7 +36,7 @@
     
     <div class="header-center">
       <div class="search-container">
-        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+        <i data-feather="search" class="search-icon" aria-hidden="true"></i>
         <input type="text" class="search-bar" placeholder="Search..." aria-label="Search">
       </div>
       
@@ -43,7 +53,7 @@
     
     <div class="header-actions">
       <button class="notifications-btn" aria-label="View notifications">
-        <i class="fas fa-bell" aria-hidden="true"></i>
+        <i data-feather="bell" aria-hidden="true"></i>
       </button>
       
       <button class="profile-picture" aria-label="Open user profile menu"></button>
@@ -61,39 +71,39 @@
 
   <nav class="sidebar-nav">
     <div class="nav-item active">
-      <i class="fa-solid fa-book"></i>
-      <span>Buy a course form</span>
+      <i data-feather="shopping-cart"></i>
+      <span class="nav-text">Buy a course</span>
     </div>
 
     <div class="nav-item">
-      <i class="fa-solid fa-calendar"></i>
-      <span>Semester info</span>
+      <i data-feather="calendar"></i>
+      <span class="nav-text">Semester info</span>
     </div>
 
     <div class="nav-item">
-      <i class="fa-solid fa-user"></i>
-      <span>Account</span>
+      <i data-feather="user"></i>
+      <span class="nav-text">Account</span>
     </div>
 
     <div class="nav-item">
-      <i class="fa-solid fa-repeat"></i>
-      <span>Change Subjects</span>
+      <i data-feather="refresh-cw"></i>
+      <span class="nav-text">Change Subjects</span>
     </div>
 
     <div class="nav-item">
-      <i class="fa-solid fa-gear"></i>
-      <span>Settings</span>
+      <i data-feather="settings"></i>
+      <span class="nav-text">Settings</span>
     </div>
   </nav>
 
-  <div class="promo-card">
+    <div class="promo-card">
     <img src="resources/robot.png" alt="robot-image" class="promo-card-image"> 
     <span class="promo-card-text">Try the AI<br>feature<i class="fa-solid fa-arrow-up promo-arrow"></i></span>
   </div>
 
  <button class="logout-btn">
-  <i class="fa-solid fa-right-from-bracket"></i>
-  <span>Logout</span>
+  <i data-feather="log-out"></i>
+  <span class="nav-text">Logout</span>
 </button>
 
 </aside>
@@ -112,5 +122,18 @@
   </div>
 
     
+<script>
+// Toggle active nav-item on click so it stays styled (black)
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.sidebar-nav .nav-item');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+});
+</script>
+
 </body>
 </html>

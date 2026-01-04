@@ -235,7 +235,7 @@
 .balance-card {
   height: auto;
   border-radius: 14px;
-  background: #e1e2e4ea;
+  background: #cfd3db;
   padding: 12px 16px;
   font-weight: 600;
   color: var(--text-main);
@@ -295,38 +295,67 @@
 .nav-item {
   height: 44px;
   border-radius: 10px;
-  background: #f6f6f6;
+  /* background: #f6f6f6; */
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 0 14px;
   font-size: 14px;
   cursor: pointer;
-  color: var(--text-main);
+  /* color: var(--text-main); */
   border: none;
   transition: all 0.2s ease;
 }
 
-.nav-item:hover {
-  background: #e9e7ff;
-  color: var(--primary);
-}
-
-.nav-item.active {
-  background: #e9e7ff;
-  color: var(--primary);
-}
-
 .nav-item i,
-.logout-btn i {
-  font-size: 16px;
+.nav-item svg {
+  width: 16px;
+  height: 16px;
+  color: #cfd3db; /* default icon color */
+  transition: color 0.15s ease;
+}
+
+/* Ensure SVG icons use the current text color for stroke */
+.nav-item svg,
+.notifications-btn svg,
+.logout-btn svg,
+.promo-card .promo-arrow svg,
+.search-icon svg {
+  stroke: currentColor;
+  fill: none;
+}
+
+.logout-btn i,
+.logout-btn svg {
+  width: 16px;
+  height: 16px;
   color: inherit;
 }
 
-.nav-item.active i {
-  color: var(--primary);
+/* Hover on non-active items -> icons go black; active items keep black */
+.nav-item:hover:not(.active) i,
+.nav-item:hover:not(.active) svg {
+  color: #000;
 }
 
+.nav-item.active i,
+.nav-item.active svg {
+  color: #000;
+}
+.nav-text {
+  font-family: 'Inter', sans-serif;
+  color: #cfd3db;
+  transition: color 0.15s ease;
+
+}
+
+.nav-item:hover .nav-text,
+.nav-item.active .nav-text {
+  color: #000;
+}
+.nav-item:hover {
+  color: black;
+}
 /* Promo Card */
 .promo-card {
   background: rgba(248, 89, 61, 0.781);
