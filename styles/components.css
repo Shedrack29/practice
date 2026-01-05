@@ -483,6 +483,204 @@
   color: white;
 }
 
+/* make right-panel a column flex container so items (header + rects) can be positioned */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right-panel scoped dashboard header to resemble main dashboard header */
+.right-panel .dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 37px;
+  padding: 8px 12px;
+}
+
+.right-panel .dashboard-welcome {
+  margin-left: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+}
+
+.right-panel .dashboard-options {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+/* Right-panel options: remove white background, widen angles, keep scoped hover */
+.right-panel .dashboard-options.right-panel-options {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+  padding: 4px 4px; /* tighter padding */
+  display: inline-flex;
+  align-items: center;
+  gap: 2px; /* icons closer together */
+  color: var(--text-main);
+}
+
+.right-panel .dashboard-options.right-panel-options i,
+.right-panel .dashboard-options.right-panel-options svg {
+  font-size: 18px;
+  transform: scaleX(1.15); /* keep chevrons a bit wider */
+  display: inline-block;
+  margin: 0;
+}
+
+/* Make feather SVGs slightly thinner and a bit smaller in the right-panel */
+.right-panel .dashboard-options.right-panel-options svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2; /* slightly lighter than global */
+}
+
+.right-panel .dashboard-options.right-panel-options:hover {
+  background: transparent; /* keep no white background on hover */
+  color: var(--primary);
+}
+
+/* Two stacked rectangles inside right-panel */
+.right-panel .right-rects {
+  display: flex;
+  flex-direction: row; /* stack vertically */
+  gap: 16px; /* little spacing between each */
+  margin-top: 25px; /* place directly under the header */
+  width: 100%;
+  justify-content: center; /* center the row horizontally */
+  align-items: center; /* center the rectangles vertically within their row */
+}
+
+.right-panel .right-rect {
+  width: 150px; /* shorter horizontal */
+  height: 210px; /* longer vertical */
+  background: var(--bg-card);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 12px;
+  background-color: var(--primary);
+  position: relative;
+  overflow: hidden; /* clip decorative elements */
+}
+
+/* left-align contents inside each rect and provide basic title styling */
+.right-panel .right-rect {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center; /* vertically center contents */
+  padding-left: 14px;
+  box-sizing: border-box;
+}
+
+.right-panel .right-rect .rect-title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.4;
+}
+
+/* nudge the second rectangle's title slightly upward (smaller lift so subtitles stay close) */
+.right-panel .right-rects .right-rect:nth-child(2) .rect-title {
+  transform: translateY(-6px);
+}
+
+/* For the second rectangle, let the subtitle(s) flow below the title instead of absolute placement */
+.right-panel .right-rects .right-rect:nth-child(2) .rect-subtitle,
+.right-panel .right-rects .right-rect:nth-child(2) .rect-subtitle-2 {
+  position: static;
+  transform: none;
+  right: auto;
+  top: auto;
+  /* place subtitle above title with a small bottom gap, and keep the second subtitle just below the title */
+  margin: 0 0 6px 0;
+  align-self: flex-start;
+}
+
+/* second-rect additional subtitle variant */
+.right-panel .right-rects .right-rect:nth-child(2) .rect-subtitle-2 {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  /* keep the "Revision" line exactly under the title with minimal spacing */
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* subtitle styling: white, 10px, positioned to the right and just above the title */
+.right-panel .right-rect .rect-content {
+  position: relative;
+  width: 100%;
+}
+
+.right-panel .right-rect .rect-subtitle {
+  position: absolute;
+  top: 40%;
+  left: 1px;
+  transform: translateY(-31px);
+  margin: 0;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+/* decorative stars at top-right and subtle wave at bottom */
+.right-panel .right-rect::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 2px;
+  height: 2px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  box-shadow:
+    14px 2px 0 rgba(255,255,255,0.95),
+    -18px 6px 0 rgba(255,255,255,0.85),
+    30px 10px 0 rgba(255,255,255,0.8),
+    -34px -4px 0 rgba(255,255,255,0.9),
+    48px 4px 0 rgba(255,255,255,0.7);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.right-panel .right-rect {
+  --rect-wave-color: #433af7; /* wave color */
+  color: var(--rect-wave-color);
+}
+
+
+.right-panel .right-rect::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  /* paint the wave using the element background-color and an SVG mask so the color
+     can be controlled via `--rect-wave-color` (works when data-URL `currentColor` doesn't update)
+  */
+  background-color: rgba(32,26,145,0.9); /* fallback if variable not applied */
+  background-color: var(--rect-wave-color, rgb(32,26,145,0.9));
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0 60 C150 10 350 110 600 60 C850 10 1050 110 1200 60 L1200 120 L0 120 Z' fill='white'/></svg>");
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0 60 C150 10 350 110 600 60 C850 10 1050 110 1200 60 L1200 120 L0 120 Z' fill='white'/></svg>");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  pointer-events: none;
+  transform: translateY(0);
+}
+
 /* Dashboard panels with hover expansion */
 .dashboard-panels {
   display: flex;
@@ -589,13 +787,14 @@
 
 .panel-text {
   display: block;
+  font-weight: bold;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
   word-break: break-word;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: var(--text-main);
+  color: #585c63;
   text-align: center;
   transition: writing-mode 0.25s ease, transform 0.25s ease, font-weight 0.25s ease, left 0.25s ease, top 0.25s ease;
 }
@@ -607,6 +806,7 @@
   top: 62px;
   transform: none;
   height: 0%;
+  color: black;
   /* deeper blue resembling the profile gradient */
   background: linear-gradient(180deg, rgba(108,99,255,0.36), rgba(139,92,246,0.32));
 }
@@ -755,7 +955,7 @@ body.app-loading > *:not(#loader) {
   transform: rotate(180deg);
   font-family: 'Inter', sans-serif;
   font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, "Roboto Mono", "Inter", monospace;
-  color: var(--text-main);
+  color: #585c63;
   position: absolute;
   top: 16px;
   left: 50%;
